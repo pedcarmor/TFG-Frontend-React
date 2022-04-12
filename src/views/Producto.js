@@ -1,33 +1,30 @@
 import productoService from 'services/producto'
 import React, { useState ,useEffect } from 'react'
-import Producto from 'Productos'
+import Producto from 'components/Producto'
 
- const Producto = () => {
+ const Productos = () => {
 
-    const [producto, setProducto] = useState([])
+    const [productos, setProductos] = useState([])
     const [showAll, setShowAll] = useState(true)
 
     useEffect(()=>{
-        productoService.getProducto("miel").then(initialProductos => {
-            setProducto(initialProductos)
+        productoService.getAll().then(initialProductos => {
+            setProductos(initialProductos)
         })
     },[]);
 
     const productosToShow = showAll
-    ? producto
-    : producto.filter(p => producto.nombre)
+    ? productos
+    : productos.filter(producto => producto.nombre)
 
 return (
     <div>
-        <h1>Producto</h1>
-      <table>
-        {productoToShow.map((producto, i) => 
-          <Productos 
+        {productosToShow.map((producto, i) => 
+          <Producto 
           key={i}
           producto={producto}>
-          </Productos>
+          </Producto>
         )}
-      </table>    
       </div>   
 )
 }
