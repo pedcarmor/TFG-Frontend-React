@@ -1,33 +1,24 @@
 import userService from 'services/user'
 import React, { useState ,useEffect } from 'react'
-import User from 'components/User'
+import AllUsers from 'components/AllUsers'
 
- const Users = () => {
-
+const Users = () => {
     const [users, setUsers] = useState([])
-    const [showAll, setShowAll] = useState(true)
-    
+  
     useEffect(()=>{
         userService.getAll().then(initialUsers => {
             setUsers(initialUsers)
         })
     },[]);
-
-    const usersToShow = showAll
-    ? users
-    : users.filter(user => user.username)
-
 return (
     <div>
         <h1>Usuarios</h1>
-      <table>
-        {usersToShow.map((user, i) => 
-          <User 
+        {users.map((user, i) => 
+          <AllUsers 
           key={i}
           user={user}>
-          </User>
+          </AllUsers>
         )}
-      </table>    
       </div>   
 )
 }
