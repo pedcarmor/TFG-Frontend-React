@@ -1,29 +1,23 @@
 import productoService from 'services/producto'
 import React, { useState ,useEffect } from 'react'
-import Producto from 'components/Producto'
+import AllProductos from 'components/AllProductos'
 
- const Productos = () => {
-
+const Productos = () => {
     const [productos, setProductos] = useState([])
-    const [showAll, setShowAll] = useState(true)
-
+  
     useEffect(()=>{
         productoService.getAll().then(initialProductos => {
             setProductos(initialProductos)
         })
     },[]);
-
-    const productosToShow = showAll
-    ? productos
-    : productos.filter(producto => producto.nombre)
-
 return (
     <div>
-        {productosToShow.map((producto, i) => 
-          <Producto 
+        <h1>Productos</h1>
+        {productos.map((producto, i) => 
+          <AllProductos
           key={i}
           producto={producto}>
-          </Producto>
+          </AllProductos>
         )}
       </div>   
 )
