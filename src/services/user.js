@@ -18,7 +18,11 @@ const getUser = (username) => {
 
 const deleteUser = (username) => {
     const request = axios.delete(`${baseUrl}/${username}/delete`)
-    return request.then(response => response.data)
-}
+    return request.then(
+        function(response){
+            console.log(response.data);
+            getAll()
+        }
+    )}
   
 export default {getAll, create, getUser,deleteUser};
