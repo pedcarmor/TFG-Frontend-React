@@ -2,7 +2,7 @@ import React, { useState ,useEffect } from 'react'
 import userService from 'services/user'
 import Table  from 'react-bootstrap/Table'
 import {
-    useParams, Link
+    useParams
   } from "react-router-dom"
 import { Button } from 'react-bootstrap'
 
@@ -40,6 +40,7 @@ const ShowUser = () =>{
         <Button variant="outline-primary" onClick={()=> userService.deleteUser(user.username)}
         href="/api/admin/users">Eliminar
         </Button>
+        <Button variant="outline-primary" href='/api/admin/users/:username/edit'>Editar</Button>
         </div>
         </>
     )
