@@ -1,14 +1,13 @@
 import React from 'react'
-import { Button} from 'react-bootstrap'
 import UsersView from './usersTable';
-
+import {Link} from "react-router-dom"
 const Users = () => {
 
 return (
     <>
     <div className='container'>
     <UsersView></UsersView>
-    <Button href = "/api/admin/users/create">Crear Usuario</Button>
+    <Link to={`/api/admin/users/create`} className="btn btn-primary">Añadir usuario</Link>
     </div>
     </>
 )

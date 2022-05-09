@@ -1,4 +1,4 @@
-import AllUsers from 'components/AllUsers'
+import AllUsers from 'components/users/AllUsers'
 import Table  from 'react-bootstrap/Table'
 import userService from 'services/user'
 import React, { useState ,useEffect } from 'react'
