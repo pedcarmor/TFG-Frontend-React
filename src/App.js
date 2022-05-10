@@ -1,5 +1,5 @@
 import 'styles/App.css';
-import Users from 'views/showAllUsers'
+import Users from 'views/users/showAllUsers'
 import User from 'components/users/ShowUser'
 import FormUser from 'components/users/FormUser'
 import {Navbar, Nav, Container} from 'react-bootstrap'

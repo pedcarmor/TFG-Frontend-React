@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Button, Form, FormLabel, FormControl,FormGroup,Alert } from 'react-bootstrap'
-import userService from 'services/user'
+import userService from 'services/users/user'
 import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const patterns = {
   dni:/^[0-9]{8,8}[A-Za-z]$/,
@@ -12,21 +12,27 @@ const patterns = {
 }
 
 export default function FormUser() { 
-  let navigate = useNavigate();
+  const username = useParams().username
+  console.log(username);
+  let navigate = useNavigate()
   
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const [editing, setEditing] = useState(false)
+
+  
+  const [user, setUsers] = useState([]);
+
   const onSubmit = values =>{
     if(editing){
-      userService.modifyUser(values)
+      userService.modifyUser(values)      
     }else{
       userService.createUser(values)
     }
-    navigate(`/api/admin/users/${values.username}`, { replace: true });
+    navigate("/api/admin/users", { replace: true });
   }
 
-  return (
+    return (
       <>
         <Form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>

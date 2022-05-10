@@ -1,6 +1,6 @@
 import AllUsers from 'components/users/AllUsers'
 import Table  from 'react-bootstrap/Table'
-import userService from 'services/user'
+import userService from 'services/users/user'
 import React, { useState ,useEffect } from 'react'
 const UsersView = () => {
 

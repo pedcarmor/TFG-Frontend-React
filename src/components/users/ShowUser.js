@@ -1,5 +1,5 @@
 import React, { useState ,useEffect } from 'react'
-import userService from 'services/user'
+import userService from 'services/users/user'
 import Table  from 'react-bootstrap/Table'
 
 import {
