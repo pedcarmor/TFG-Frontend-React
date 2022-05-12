@@ -50,7 +50,7 @@ const ShowCliente = () =>{
         <Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
         href="/api/clientes">Eliminar
         </Button>
-        <Link to={`/api/admin/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link>
+        <Link to={`/api/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link>
         </div>
         </>
     )
