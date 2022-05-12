@@ -1,19 +1,18 @@
 import React, {useState} from 'react'
-import { Button, Form, FormLabel, FormControl,FormGroup,Alert } from 'react-bootstrap'
-import userService from 'services/users/user'
+import { Button, Form, FormLabel, FormControl,FormGroup,Alert, FormCheck } from 'react-bootstrap'
+import clienteService from 'services/clientes/cliente'
 import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { useNavigate, useParams } from "react-router-dom";
 
 const patterns = {
   dni:/^[0-9]{8,8}[A-Za-z]$/,
-  password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
   telefono: /^[0-9]{9}$/,
 }
 
-export default function FormUser() { 
-  const username = useParams().username
-  console.log(username);
+export default function FormCliente() { 
+  const id = useParams().id
+  console.log(id);
   let navigate = useNavigate()
   
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -21,15 +20,15 @@ export default function FormUser() {
   const [editing, setEditing] = useState(false)
 
   
-  const [user, setUsers] = useState([]);
+  const [cliente, setCliente] = useState([]);
 
   const onSubmit = values =>{
     if(editing){
-      userService.modifyUser(values)      
+      clienteService.modifyCliente(values)      
     }else{
-      userService.createUser(values)
+      clienteService.createCliente(values)
     }
-    navigate("/api/admin/users", { replace: true });
+    navigate("/api/clientes", { replace: true });
   }
 
     return (
@@ -70,20 +69,8 @@ export default function FormUser() {
           <ErrorMessage errors={errors} name = "email" as={<Alert variant="danger" />}/>
           </FormGroup>
           <FormGroup>
-          <FormLabel>Nombre de usuario:</FormLabel>
-          <FormControl {...register("username",
-                          { required: "Campo requerido"})} />
-          <ErrorMessage errors={errors} name = "username" as={<Alert variant="danger" />}/>
-          </FormGroup>
-          <FormGroup>
-          <FormLabel>Contraseña:</FormLabel>
-          <FormControl type="password" {...register("password",
-                          { required: "Campo requerido",
-                        pattern: {
-                            value: patterns.password,
-                            message: 'Debe contener 8 caracteres, una minúscula, una mayúscula y un número.' // JS only: <p>error message</p> TS only support string
-                            }})}/>
-          <ErrorMessage errors={errors} name = "password" as={<Alert variant="danger" />}/>
+          <FormCheck type="checkbox" label= "¿El cliente tiene IVA?" {...register("tieneIVA")} />
+          <ErrorMessage errors={errors} name = "tieneIVA" as={<Alert variant="danger" />}/>
           </FormGroup>
           <Button type="submit">Guardar</Button>
         </Form>
