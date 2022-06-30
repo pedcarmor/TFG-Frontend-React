@@ -46,9 +46,9 @@ const ShowEmpleado = () =>{
             </tbody>
         </Table>
         <Button variant="outline-primary" onClick={()=> empleadoService.deleteEmpleado(id)}
-        href="/api/empleados">Eliminar
+        href="/empleados">Eliminar
         </Button>
-        <Link to={`/api/empleados/${empleado.id}/edit`} className="btn btn-primary">Editar</Link>
+        <Link to={`/empleados/${empleado.id}/edit`} className="btn btn-primary">Editar</Link>
         </div>
         </>
     )

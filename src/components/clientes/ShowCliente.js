@@ -48,9 +48,9 @@ const ShowCliente = () =>{
             </tbody>
         </Table>
         <Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
-        href="/api/clientes">Eliminar
+        href="/clientes">Eliminar
         </Button>
-        <Link to={`/api/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link>
+        <Link to={`/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link>
         </div>
         </>
     )

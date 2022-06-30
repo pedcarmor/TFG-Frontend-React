@@ -28,7 +28,7 @@ export default function FormCliente() {
     }else{
       clienteService.createCliente(values)
     }
-    navigate("/api/clientes", { replace: true });
+    navigate("/clientes", { replace: true });
   }
 
     return (

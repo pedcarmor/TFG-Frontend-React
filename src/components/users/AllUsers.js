@@ -6,7 +6,7 @@ const AllUsers = ({user}) =>{
         <>
             <tbody>
                 <tr>
-                <td><Link to={`/api/admin/users/${user.username}`}>{user.username}</Link></td>
+                <td><Link to={`/admin/users/${user.username}`}>{user.username}</Link></td>
                 <td>{user.nombre}</td>
                 <td>{user.direccion}</td>
                 <td>{user.telefono}</td>

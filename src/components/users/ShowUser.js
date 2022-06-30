@@ -40,9 +40,9 @@ const ShowUser = () =>{
             </tbody>
         </Table>
         <Button variant="outline-primary" onClick={()=> userService.deleteUser(username)}
-        href="/api/admin/users">Eliminar
+        href="/admin/users">Eliminar
         </Button>
-        <Link to={`/api/admin/users/${user.username}/edit`} className="btn btn-primary">Editar</Link>
+        <Link to={`/admin/users/${user.username}/edit`} className="btn btn-primary">Editar</Link>
         </div>
         </>
     )

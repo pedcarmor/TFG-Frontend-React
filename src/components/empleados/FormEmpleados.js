@@ -10,7 +10,7 @@ const patterns = {
   telefono: /^[0-9]{9}$/,
 }
 
-export default function FormCliente() { 
+export default function FormEmpleado() { 
   const id = useParams().id
   console.log(id);
   let navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function FormCliente() {
   const [editing, setEditing] = useState(false)
 
   
-  const [cliente, setCliente] = useState([]);
+  const [empleado, setEmpleado] = useState([]);
 
   const onSubmit = values =>{
     if(editing){
@@ -28,7 +28,7 @@ export default function FormCliente() {
     }else{
       empleadoService.createEmpleado(values)
     }
-    navigate("/api/empleados", { replace: true });
+    navigate("/empleados", { replace: true });
   }
 
     return (

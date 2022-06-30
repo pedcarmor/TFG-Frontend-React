@@ -7,7 +7,7 @@ return (
     <>
     <div className='container'>
     <UsersView></UsersView>
-    <Link to={`/api/admin/users/create`} className="btn btn-primary">Añadir usuario</Link>
+    <Link to={`/users/create`} className="btn btn-primary">Añadir usuario</Link>
     </div>
     </>
 )

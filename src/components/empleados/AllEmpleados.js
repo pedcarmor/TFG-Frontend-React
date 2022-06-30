@@ -6,7 +6,7 @@ const AllEmpleados = ({empleado}) =>{
         <>
             <tbody>
                 <tr>
-                <td><Link to={`/api/empleados/${empleado.id}`}>{empleado.nombre}</Link></td>
+                <td><Link to={`/empleados/${empleado.id}`}>{empleado.nombre}</Link></td>
                 <td>{empleado.direccion}</td>
                 <td>{empleado.telefono}</td>
                 <td>{empleado.email}</td>

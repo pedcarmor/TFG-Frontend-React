@@ -29,7 +29,7 @@ export default function FormUser() {
     }else{
       userService.createUser(values)
     }
-    navigate("/api/admin/users", { replace: true });
+    navigate("/", { replace: true });
   }
 
     return (

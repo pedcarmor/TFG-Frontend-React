@@ -7,7 +7,7 @@ return (
     <>
     <div className='container'>
     <EmpleadosView></EmpleadosView>
-    <Link to={`/api/empleados/create`} className="btn btn-primary">Añadir empleado</Link>
+    <Link to={`/empleados/create`} className="btn btn-primary">Añadir empleado</Link>
     </div>
     </>
 )

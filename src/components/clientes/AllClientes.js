@@ -13,7 +13,7 @@ const AllClientes = ({cliente}) =>{
         <>
             <tbody>
                 <tr>
-                <td><Link to={`/api/clientes/${cliente.id}`}>{cliente.nombre}</Link></td>
+                <td><Link to={`/clientes/${cliente.id}`}>{cliente.nombre}</Link></td>
                 <td>{cliente.direccion}</td>
                 <td>{cliente.telefono}</td>
                 <td>{cliente.email}</td>
