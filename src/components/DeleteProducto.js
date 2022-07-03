@@ -1,5 +1,5 @@
 import { useState ,useEffect } from 'react'
-import productoService from 'services/producto'
+import productoService from 'services/products/producto'
 import {
     useParams, Route, Navigate
   } from "react-router-dom"

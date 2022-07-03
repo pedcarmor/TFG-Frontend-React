@@ -1,4 +1,4 @@
-import productoService from 'services/producto'
+import productoService from 'services/products/producto'
 import React, { useState ,useEffect } from 'react'
 import AllProductos from 'components/AllProductos'
 

@@ -1,6 +1,8 @@
+import React from 'react'
 import logo from './logo.svg';
 import './App.css';
 import Productos from 'views/AllProductos';
+import FormProducto from 'services/products/producto';
 import Producto from 'components/Producto';
 
 import {
@@ -20,6 +22,8 @@ function App() {
       <Routes>
         <Route path="/api/products" element={<Productos />} ></Route>
         <Route path="/api/products/:nombre" element={<Producto />} ></Route>
+        <Route path="/api/products/create" element={<FormProducto />}></Route>
+        <Route path="api/products/:nombre/edit" element={<FormProducto />}></Route>
       </Routes>
     </Router>
     </div>
