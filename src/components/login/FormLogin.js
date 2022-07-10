@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form, FormLabel, FormControl,FormGroup,Alert } from 'react-bootstrap'
-import loginService from 'services/login/login'
 import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { useNavigate } from "react-router-dom";
-
+import useUser from 'hooks/useUser'
 
 const patterns = {
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
@@ -14,14 +13,19 @@ export default function FormLogin() {
   let navigate = useNavigate()
   
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const {login, isLogged} = useUser()
+
+  useEffect(()=>{
+    console.log(isLogged)
+    if(isLogged) navigate("/",{ replace: true })
+  },[isLogged,navigate])
 
   const onSubmit = values =>{
-    loginService.login(values);
-    navigate("/", { replace: true });
+    login(values)
   }
-
-    return (
+  return (
       <>
+      <h2>Inicio de sesión</h2>
         <Form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
           <FormLabel>Nombre de usuario o email:</FormLabel>

@@ -9,26 +9,18 @@ import FormUser from 'components/users/FormUser'
 import FormCliente from 'components/clientes/FormCliente'
 import FormEmpleado from 'components/empleados/FormEmpleados'
 import FormLogin from 'components/login/FormLogin';
-import {Navbar, Nav, Container} from 'react-bootstrap'
-import { BrowserRouter as Router, NavLink, Route,Routes } from "react-router-dom"
-
+import Home from 'views/home'
+import Header from 'components/header/header';
+import { BrowserRouter as Router, Route,Routes } from "react-router-dom"
+import {UserContextProvider} from 'context/UserContext'
 function App() {
   return (
-    
+    <UserContextProvider>
     <div className='container'>
     <Router>
-      <Navbar bg="dark" variant="dark">
-      <Container>
-      <Nav className="me-auto">
-        <NavLink to = "/">Home</NavLink>
-        <NavLink to = "/admin/users">Usuarios</NavLink>
-        <NavLink to = "/clientes">Clientes</NavLink>
-        <NavLink to = "/empleados">Empleados</NavLink>
-        <NavLink to = "/login">Login</NavLink>
-      </Nav>
-      </Container>
-      </Navbar>
+      <Header/>
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/users/:username" element={<User />}/>
         <Route path="/users/create" element={<FormUser/>} />
@@ -43,6 +35,7 @@ function App() {
     </Routes>
     </Router>
     </div>
+    </UserContextProvider>
   );
 }
 

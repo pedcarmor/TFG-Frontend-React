@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Button, Form, FormLabel, FormControl,FormGroup,Alert, FormCheck } from 'react-bootstrap'
 import clienteService from 'services/clientes/cliente'
 import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { useNavigate, useParams } from "react-router-dom";
+import useUser from 'hooks/useUser'
 
 const patterns = {
   dni:/^[0-9]{8,8}[A-Za-z]$/,
@@ -11,10 +12,10 @@ const patterns = {
 }
 
 export default function FormCliente() { 
+
   const id = useParams().id
-  console.log(id);
   let navigate = useNavigate()
-  
+  const {isLogged} = useUser()
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const [editing, setEditing] = useState(false)
@@ -30,6 +31,9 @@ export default function FormCliente() {
     }
     navigate("/clientes", { replace: true });
   }
+  useEffect(()=>{
+    if(!isLogged) navigate("/login",{ replace: true })
+},[isLogged,navigate]);
 
     return (
       <>

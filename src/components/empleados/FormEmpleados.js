@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import { Button, Form, FormLabel, FormControl,FormGroup,Alert, FormCheck } from 'react-bootstrap'
+import React, {useState, useEffect} from 'react'
+import { Button, Form, FormLabel, FormControl,FormGroup,Alert } from 'react-bootstrap'
 import empleadoService from 'services/empleados/empleado'
 import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { useNavigate, useParams } from "react-router-dom";
+import useUser from 'hooks/useUser'
 
 const patterns = {
   dni:/^[0-9]{8,8}[A-Za-z]$/,
@@ -14,13 +15,15 @@ export default function FormEmpleado() {
   const id = useParams().id
   console.log(id);
   let navigate = useNavigate()
-  
+  const {isLogged} = useUser()
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const [editing, setEditing] = useState(false)
+  const [empleado, setEmpleado] = useState(null);
 
-  
-  const [empleado, setEmpleado] = useState([]);
+  useEffect(()=>{
+    if(!isLogged) navigate("/login",{ replace: true })
+},[isLogged,navigate]);
 
   const onSubmit = values =>{
     if(editing){

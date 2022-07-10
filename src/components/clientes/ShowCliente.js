@@ -1,24 +1,26 @@
 import React, { useState ,useEffect } from 'react'
 import clienteService from 'services/clientes/cliente'
 import Table  from 'react-bootstrap/Table'
-
+import useUser from 'hooks/useUser'
 import {
-    useParams,Link
+    useParams,Link,useNavigate
   } from "react-router-dom"
 import { Button } from 'react-bootstrap'
 
-const ShowCliente = () =>{    
-    
-
+const ShowCliente = () =>{   
     const id = useParams().id
     const [cliente, setCliente] = useState([]);
-    
 
+    const {isLogged} = useUser()
+    let navigate = useNavigate()
     useEffect(()=>{
-    clienteService.getCliente(id).then(cliente => {
-        setCliente(cliente)
-    })
-},[]);
+        if(!isLogged){ navigate("/login",{ replace: true })}
+        else{
+            clienteService.getCliente(id).then(cliente => {
+                setCliente(cliente)
+            })
+        }
+    },[isLogged,navigate,id]);
 
     let ivaString = ""
     if(cliente.tieneIVA===true){
@@ -47,10 +49,13 @@ const ShowCliente = () =>{
                     <td>{ivaString}</td></tr>
             </tbody>
         </Table>
-        <Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
+        {isLogged
+        ?<><Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
         href="/clientes">Eliminar
         </Button>
-        <Link to={`/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link>
+        <Link to={`/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link></>
+        :<div></div>
+        }
         </div>
         </>
     )

@@ -1,24 +1,26 @@
 import React, { useState ,useEffect } from 'react'
 import empleadoService from 'services/empleados/empleado'
 import Table  from 'react-bootstrap/Table'
-
+import useUser from 'hooks/useUser'
 import {
-    useParams,Link
+    useParams,Link,useNavigate
   } from "react-router-dom"
 import { Button } from 'react-bootstrap'
 
 const ShowEmpleado = () =>{    
-    
-
     const id = useParams().id
     const [empleado, setEmpleado] = useState([]);
     
-
+    const {isLogged} = useUser()
+    let navigate = useNavigate()
     useEffect(()=>{
-    empleadoService.getEmpleado(id).then(empleado => {
-        setEmpleado(empleado)
-    })
-},[]);
+        if(!isLogged){ navigate("/login",{ replace: true })}
+        else{
+            empleadoService.getEmpleado(id).then(empleado => {
+                setEmpleado(empleado)
+            })
+        }
+    },[isLogged,navigate,id]);
     return (
         <>
         <div>
@@ -45,10 +47,13 @@ const ShowEmpleado = () =>{
                     <td>{empleado.salario}</td></tr>
             </tbody>
         </Table>
-        <Button variant="outline-primary" onClick={()=> empleadoService.deleteEmpleado(id)}
+        {isLogged
+        ?<><Button variant="outline-primary" onClick={()=> empleadoService.deleteEmpleado(id)}
         href="/empleados">Eliminar
         </Button>
-        <Link to={`/empleados/${empleado.id}/edit`} className="btn btn-primary">Editar</Link>
+        <Link to={`/empleados/${empleado.id}/edit`} className="btn btn-primary">Editar</Link></>
+        :<div></div>
+        }
         </div>
         </>
     )

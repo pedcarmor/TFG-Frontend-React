@@ -2,14 +2,23 @@ import AllEmpleados from 'components/empleados/AllEmpleados'
 import Table  from 'react-bootstrap/Table'
 import empleadoService from 'services/empleados/empleado'
 import React, { useState ,useEffect } from 'react'
+import useUser from 'hooks/useUser'
+import { useNavigate } from "react-router-dom";
 const EmpleadosView = () => {
 
+    const {isLogged} = useUser()
+    let navigate = useNavigate()
     const [empleados, setEmpleados] = useState([])
     useEffect(()=>{
-        empleadoService.getAll().then(initialEmpleados => {
-            setEmpleados(initialEmpleados)
-        })
-    },[]);
+        if(!isLogged){
+            navigate("/login",{ replace: true })
+        }else{
+            empleadoService.getAll().then(initialEmpleados => {
+                setEmpleados(initialEmpleados)
+            })
+        }
+    },[isLogged,navigate]);
+    
 return(
     <>
     <h1>Empleados</h1>
