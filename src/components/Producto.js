@@ -1,6 +1,6 @@
 import React, { useState ,useEffect } from 'react'
 import productoService from 'services/products/producto'
-
+import { Button } from 'react-bootstrap'
 import {
     useParams, Link
   } from "react-router-dom"
@@ -32,6 +32,7 @@ const ShowProducto = () =>{
         </table>
 
         <Link to={`/api/products/${producto.nombre}/delete`}>Borrar Producto</Link>
+
         </>
     )
 }

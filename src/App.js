@@ -16,14 +16,17 @@ function App() {
       <h1>TFG de Pedro Pablo y José Francisco</h1>
       <Router>
       <div className='menu'>
+        <div className='inicio'>
         <NavLink to="/">INICIO</NavLink>
+        </div>
+        <div className='Productos'>
         <NavLink to="/api/products">PRODUCTOS</NavLink>
+        </div>
       </div>
       <Routes>
         <Route path="/api/products" element={<Productos />} ></Route>
         <Route path="/api/products/:nombre" element={<Producto />} ></Route>
-        <Route path="/api/products/create" element={<FormProducto />}></Route>
-        <Route path="api/products/:nombre/edit" element={<FormProducto />}></Route>
+        <Route path="/api/products/create" element={<FormProducto/>} />
       </Routes>
     </Router>
     </div>

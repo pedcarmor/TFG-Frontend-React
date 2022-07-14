@@ -14,7 +14,7 @@ export default function FormProducto() {
 
     const [editing, setEditing] = useState(false)
   
-    const [user, setProductos] = useState([]);
+    const [producto, setProductos] = useState([]);
 
     const onSubmit = values =>{
         if(editing){
@@ -30,6 +30,7 @@ export default function FormProducto() {
         <Form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
           <FormLabel>Nombre: </FormLabel>
+          <input type='text'></input>
           <FormControl {...register("nombre",
                           { required: "Campo obligatorio"})} />
           <ErrorMessage className='alert-danger' errors={errors} name = "nombre" as={<Alert variant="danger" />}/>
@@ -47,7 +48,7 @@ export default function FormProducto() {
           <ErrorMessage errors={errors} name = "cantidadalmacen" as={<Alert variant="danger" />}/>
         </FormGroup>
         <FormGroup>
-          <FormLabel>Precio:</FormLabel>
+          <FormLabel>Stock Seguridad:</FormLabel>
           <FormControl {...register("stockseguridad",
                         { required: "Campo obligatorio"})} />
           <ErrorMessage errors={errors} name = "stockseguridad" as={<Alert variant="danger" />}/>
