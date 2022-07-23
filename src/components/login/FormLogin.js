@@ -39,11 +39,11 @@ export default function FormLogin() {
                           { required: "Campo requerido",
                           pattern: {
                             value: patterns.password,
-                            message: 'Debe contener 8 caracteres, una minúscula, una mayúscula y un número.' // JS only: <p>error message</p> TS only support string
+                            message: 'Debe contener 8 caracteres, una minúscula, una mayúscula y un número.'
                             }})} />
           <ErrorMessage errors={errors} name = "password" as={<Alert variant="danger" />}/>
           </FormGroup>
-          <Button type="submit">Guardar</Button>
+          <Button type="submit">Iniciar sesión</Button>
         </Form>
         </>
   )

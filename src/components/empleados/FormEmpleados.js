@@ -3,7 +3,7 @@ import { Button, Form, FormLabel, FormControl,FormGroup,Alert } from 'react-boot
 import empleadoService from 'services/empleados/empleado'
 import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useUser from 'hooks/useUser'
 
 const patterns = {
@@ -11,9 +11,7 @@ const patterns = {
   telefono: /^[0-9]{9}$/,
 }
 
-export default function FormEmpleado() { 
-  const id = useParams().id
-  console.log(id);
+export default function FormEmpleado() {
   let navigate = useNavigate()
   const {isLogged} = useUser()
   const { register, handleSubmit, formState: { errors } } = useForm()
