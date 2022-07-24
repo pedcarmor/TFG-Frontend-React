@@ -1,0 +1,63 @@
+import React, { useState ,useEffect } from 'react'
+import clienteService from 'services/clientes/cliente'
+import Table  from 'react-bootstrap/Table'
+import useUser from 'hooks/useUser'
+import {
+    useParams,Link,useNavigate
+  } from "react-router-dom"
+import { Button } from 'react-bootstrap'
+
+const ShowCliente = () =>{   
+    const id = useParams().id
+    const [cliente, setCliente] = useState([]);
+
+    const {isLogged} = useUser()
+    let navigate = useNavigate()
+    useEffect(()=>{
+        if(!isLogged){ navigate("/login",{ replace: true })}
+        else{
+            clienteService.getCliente(id).then(cliente => {
+                setCliente(cliente)
+            })
+        }
+    },[isLogged,navigate,id]);
+
+    let ivaString = ""
+    if(cliente.tieneIVA===true){
+        ivaString="Sí"
+    }else{
+        ivaString="No"
+    }
+    
+    return (
+        <>
+        <div>
+        <h1>Detalle del cliente</h1>
+        <Table bordered hover size="sm" responsive>
+            <tbody>
+                <tr><th scope="col">Nombre</th>
+                    <td>{cliente.nombre}</td></tr>
+                <tr><th scope="col">Dirección</th>
+                    <td>{cliente.direccion}</td></tr>
+                <tr><th scope="col">Teléfono</th>
+                    <td>{cliente.telefono}</td></tr>
+                <tr><th scope="col">Email</th>
+                    <td>{cliente.email}</td></tr>
+                <tr><th scope="col">DNI</th>
+                    <td>{cliente.dni}</td></tr>
+                    <tr><th scope="col">¿Tiene IVA?</th>
+                    <td>{ivaString}</td></tr>
+            </tbody>
+        </Table>
+        {isLogged
+        ?<><Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
+        href="/clientes">Eliminar
+        </Button>
+        <Link to={`/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link></>
+        :<div></div>
+        }
+        </div>
+        </>
+    )
+}
+export default ShowCliente;
