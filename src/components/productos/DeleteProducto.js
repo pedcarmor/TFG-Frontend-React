@@ -15,7 +15,7 @@ const DeleteProducto = () =>{
 });
 
     <Route path="/api/products/:nombre/delete" render={() =>
-    <Navigate  to="/api/products" replace />
+    <Navigate  to="/products" replace />
 } ></Route>
 
 }

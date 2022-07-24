@@ -12,8 +12,8 @@ import FormLogin from 'components/login/FormLogin';
 import Home from 'views/home'
 import Header from 'components/header/header';
 import Productos from 'views/AllProductos';
-import FormProducto from 'services/products/producto';
-import Producto from 'components/Producto';
+import FormProducto from 'components/productos/FormProducto';
+import Producto from 'components/productos/Producto';
 
 import { BrowserRouter as Router, Route,Routes } from "react-router-dom"
 import {UserContextProvider} from 'context/UserContext'
@@ -21,9 +21,6 @@ function App() {
   return (
     <UserContextProvider>
     <div className='container'>
-    <div className='Productos'>
-        <NavLink to="/api/products">PRODUCTOS</NavLink>
-    </div>
     <Router>
       <Header/>
       <Routes>
