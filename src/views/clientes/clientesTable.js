@@ -5,9 +5,6 @@ import React, { useState ,useEffect } from 'react'
 import useUser from 'hooks/useUser'
 import { useNavigate } from "react-router-dom";
 const ClientesView = () => {
-    const [jwt, setJWT] = useState(
-        () => window.sessionStorage.getItem('jwt')
-      )
     const {isLogged} = useUser()
     let navigate = useNavigate()
     const [clientes, setClientes] = useState([])
@@ -16,10 +13,10 @@ const ClientesView = () => {
             navigate("/login",{ replace: true })
         }
         else{
-            clienteService.getAll({jwt}).then(initialClientes => {
+            clienteService.getAll().then(initialClientes => {
             setClientes(initialClientes)})
         }
-    },[isLogged,navigate,jwt]);
+    },[isLogged,navigate]);
 return(
     <>
     <h1>Clientes</h1>

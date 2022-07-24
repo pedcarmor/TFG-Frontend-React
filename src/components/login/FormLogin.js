@@ -16,7 +16,6 @@ export default function FormLogin() {
   const {login, isLogged} = useUser()
 
   useEffect(()=>{
-    console.log(isLogged)
     if(isLogged) navigate("/",{ replace: true })
   },[isLogged,navigate])
 

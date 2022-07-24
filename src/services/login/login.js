@@ -5,7 +5,7 @@ export default function login ({usernameOrEmail,password}){
     const request = axios.post(baseUrl+"/login",
         JSON.stringify({usernameOrEmail,password}),{
             headers:{
-                "Content-Type":"application/json"
+                'Content-Type':'application/json'
             }
         })
         return request.then(response =>response.data)

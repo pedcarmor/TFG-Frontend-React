@@ -13,12 +13,15 @@ export default function Header(){
             <Container>
             <Nav className="me-auto">
                 <NavLink to = "/">Home</NavLink>
-                <NavLink to = "/admin/users">Usuarios</NavLink>
-                <NavLink to = "/clientes">Clientes</NavLink>
-                <NavLink to = "/empleados">Empleados</NavLink>
                 {isLogged 
-                    ?<NavLink to = "/" onClick={handleClick}>Desconectar</NavLink>
-                    :<NavLink to = "/login">Iniciar sesión</NavLink>
+                    ?<>
+                        <NavLink to = "/clientes">Clientes</NavLink>
+                        <NavLink to = "/empleados">Empleados</NavLink>
+                        <NavLink to = "/" onClick={handleClick}>Desconectar</NavLink>
+                     </>
+                    :<><NavLink to = "/users/create">Registro</NavLink>
+                    <NavLink to = "/login">Iniciar sesión</NavLink>
+                    </>
                 }
             </Nav>
             </Container>
