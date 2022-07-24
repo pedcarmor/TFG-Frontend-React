@@ -30,7 +30,6 @@ export default function FormProducto() {
         <Form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
           <FormLabel>Nombre: </FormLabel>
-          <input type='text'></input>
           <FormControl {...register("nombre",
                           { required: "Campo obligatorio"})} />
           <ErrorMessage className='alert-danger' errors={errors} name = "nombre" as={<Alert variant="danger" />}/>
@@ -53,6 +52,7 @@ export default function FormProducto() {
                         { required: "Campo obligatorio"})} />
           <ErrorMessage errors={errors} name = "stockseguridad" as={<Alert variant="danger" />}/>
         </FormGroup>
+        <br/>
         <Button type="submit">Añadir producto</Button>
         </Form>
     </>

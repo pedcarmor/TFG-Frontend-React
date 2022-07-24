@@ -17,12 +17,12 @@ export default function Header(){
                     ?<>
                         <NavLink to = "/clientes">Clientes</NavLink>
                         <NavLink to = "/empleados">Empleados</NavLink>
-                        <NavLink to="/products">Productos</NavLink>
 
                         <NavLink to = "/" onClick={handleClick}>Desconectar</NavLink>
                      </>
                     :<><NavLink to = "/users/create">Registro</NavLink>
                     <NavLink to = "/login">Iniciar sesión</NavLink>
+                    <NavLink to="/products">Productos</NavLink>
                     </>
                 }
             </Nav>
