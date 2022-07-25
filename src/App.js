@@ -11,6 +11,7 @@ import FormEmpleado from 'components/empleados/FormEmpleados'
 import FormLogin from 'components/login/FormLogin';
 import Home from 'views/home'
 import Header from 'components/header/header';
+import Footer from 'components/footer/footer'
 import Productos from 'views/AllProductos';
 import FormProducto from 'components/productos/FormProducto';
 import Producto from 'components/productos/Producto';
@@ -20,9 +21,11 @@ import {UserContextProvider} from 'context/UserContext'
 function App() {
   return (
     <UserContextProvider>
-    <div className='container'>
+    
     <Router>
       <Header/>
+      <div className='container-fluid'>
+      <div class="container xd-container">
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/admin/users" element={<Users />} />
@@ -40,8 +43,10 @@ function App() {
         <Route path="/products/:id" element={<Producto />} ></Route>
         <Route path="/products/create" element={<FormProducto/>} />
     </Routes>
-    </Router>
+    <Footer/>
     </div>
+    </div>
+    </Router>
     </UserContextProvider>
   );
 }

@@ -30,10 +30,9 @@ const ShowCliente = () =>{
     }
     
     return (
-        <>
         <div>
-        <h1>Detalle del cliente</h1>
-        <Table bordered hover size="sm" responsive>
+        <h1 className='h1-margin'>Detalle del cliente</h1>
+        <Table responsive bordered size="md">
             <tbody>
                 <tr><th scope="col">Nombre</th>
                     <td>{cliente.nombre}</td></tr>
@@ -50,14 +49,15 @@ const ShowCliente = () =>{
             </tbody>
         </Table>
         {isLogged
-        ?<><Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
-        href="/clientes">Eliminar
-        </Button>
-        <Link to={`/clientes/${cliente.id}/edit`} className="btn btn-primary">Editar</Link></>
+        ?<>
+        <div>
+        <Link to={`/clientes/${cliente.id}/edit`} className="btn btn-primary buttons-table">Editar</Link>
+        <Button variant="outline-primary" onClick={()=> clienteService.deleteCliente(id)}
+        href="/clientes">Eliminar</Button>
+        </div></>
         :<div></div>
         }
         </div>
-        </>
     )
 }
 export default ShowCliente;

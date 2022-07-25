@@ -21,8 +21,8 @@ const UsersView = () => {
     
 return(
     <>
-    <h1>Usuarios</h1>
-        <Table bordered hover>
+    <h1 className='h1-margin'>Usuarios</h1>
+        <Table responsive bordered hover size="md">
         <thead>
                 <tr>
                 <th scope="col">Username</th>

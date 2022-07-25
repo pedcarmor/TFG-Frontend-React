@@ -25,8 +25,8 @@ const ShowUser = () =>{
     return (
         <>
         <div>
-        <h1>Detalle del usuario</h1>
-        <Table bordered hover size="sm" responsive>
+        <h1 className='h1-margin'>Detalle del usuario</h1>
+        <Table bordered size="sm" responsive>
             <tbody>
             <tr>
                 <th scope="col">Username</th>
@@ -44,10 +44,13 @@ const ShowUser = () =>{
             </tbody>
         </Table>
         {isLogged
-        ?<><Button variant="outline-primary" onClick={()=> userService.deleteUser(username)}
+        ?<>
+        <div>
+        <Link to={`/admin/users/${user.username}/edit`} className="btn btn-primary buttons-table">Editar</Link>
+        <Button variant="outline-primary" onClick={()=> userService.deleteUser(username)}
         href="/admin/users">Eliminar
         </Button>
-        <Link to={`/admin/users/${user.username}/edit`} className="btn btn-primary">Editar</Link></>
+        </div></>
         :<div></div>
         }
         </div>

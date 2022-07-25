@@ -21,8 +21,8 @@ const EmpleadosView = () => {
     
 return(
     <>
-    <h1>Empleados</h1>
-        <Table bordered hover>
+    <h1 className='h1-margin'>Empleados</h1>
+        <Table responsive bordered hover size="md">
         <thead>
                 <tr>
                 <th scope="col">Nombre</th>
