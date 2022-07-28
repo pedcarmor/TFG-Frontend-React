@@ -5,33 +5,30 @@ import { useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function FormProducto() { 
-    const nombre = useParams().nombre
-    console.log(nombre);
+export default function FormProductoEdit() { 
+    const id = useParams().id
+    console.log(id);
     let navigate = useNavigate()
-  
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const [editing, setEditing] = useState(false)
-  
-    const [producto, setProductos] = useState([]);
-
+    const producto = productoService.getProducto(id)
+    console.log(producto.nombre);
     const onSubmit = values =>{
-        if(editing){
-            productoService.editProducto(values)      
-        }else{
-            productoService.createProducto(values)
-        }
-    navigate("/", { replace: true });
+    productoService.editProducto(values)      
+        
+    navigate("/products", { replace: true });
   }
   
    return (
     <>
         <Form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl {...register("id",
+                        { required: "Campo obligatorio"})} />
         <FormGroup>
           <FormLabel>Nombre: </FormLabel>
           <FormControl {...register("nombre",
-                          { required: "Campo obligatorio"})} />
+                          { required: "Campo obligatorio"})} 
+                          />
           <ErrorMessage className='alert-danger' errors={errors} name = "nombre" as={<Alert variant="danger" />}/>
         </FormGroup>
         <FormGroup>
@@ -53,7 +50,7 @@ export default function FormProducto() {
           <ErrorMessage errors={errors} name = "stockseguridad" as={<Alert variant="danger" />}/>
         </FormGroup>
         <br/>
-        <Button type="submit">Añadir producto</Button>
+        <Button type="submit">Guardar</Button>
         </Form>
     </>
   )

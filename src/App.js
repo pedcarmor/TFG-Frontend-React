@@ -12,7 +12,8 @@ import FormLogin from 'components/login/FormLogin';
 import Home from 'views/home'
 import Header from 'components/header/header';
 import Productos from 'views/AllProductos';
-import FormProducto from 'components/productos/FormProducto';
+import FormProductoCreate from 'components/productos/FormProductoCreate';
+import FormProductoEdit from 'components/productos/FormProductoEdit'
 import Producto from 'components/productos/Producto';
 
 import { BrowserRouter as Router, Route,Routes } from "react-router-dom"
@@ -38,7 +39,8 @@ function App() {
         <Route path="/login" element={<FormLogin/>} />
         <Route path="/products" element={<Productos />} ></Route>
         <Route path="/products/:id" element={<Producto />} ></Route>
-        <Route path="/products/create" element={<FormProducto/>} />
+        <Route path="/products/create" element={<FormProductoCreate/>} />
+        <Route path="/products/:id/edit" element={<FormProductoEdit />} ></Route>
     </Routes>
     </Router>
     </div>

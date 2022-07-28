@@ -1,6 +1,6 @@
-.producto{
-    
-    display: inline-block;
+.producto{    
+    display: flex;
+	flex-direction: column;
     padding: 10px;
     margin: 15px;
     width: 200px;

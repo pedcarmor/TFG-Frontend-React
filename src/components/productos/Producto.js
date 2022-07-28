@@ -6,11 +6,11 @@ import {
   } from "react-router-dom"
 
 const ShowProducto = () =>{
-    const nombre = useParams().nombre
+    const id = useParams().id
     const [producto, setProductos] = useState([]);
 
     useEffect(()=>{
-    productoService.getProducto(nombre).then(producto => {
+    productoService.getProducto(id).then(producto => {
         setProductos(producto)
     })
 });
@@ -18,6 +18,7 @@ const ShowProducto = () =>{
     return (
         <>
         <table>
+            
             <tbody className='tableProducto'>
                 <tr><td>Nombre: {producto.nombre}</td></tr>
                 <tr><td>Precio: {producto.precio}</td></tr>
@@ -25,14 +26,15 @@ const ShowProducto = () =>{
                 <tr><td>Stock Seguridad: {producto.stockseguridad}</td></tr>
             </tbody>
             <tr>
-                <Link to={`/api/products/${producto.nombre}/edit`}>
+                <Link to={`/products/${producto.id}/edit`}>
                     <Button variant="secondary">Editar producto</Button>
                 </Link>
             </tr>
         </table>
 
-        <Link to={`/api/products/${producto.nombre}/delete`}>Borrar Producto</Link>
-
+        <Button variant="outline-primary" onClick={()=> productoService.deleteProducto({id})}
+        href="/products">Borrar producto
+        </Button>
         </>
     )
 }

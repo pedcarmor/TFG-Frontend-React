@@ -8,13 +8,14 @@ const AllProductos = ({producto,i}) =>{
     return (
         <>
         <div className='addProducto'>
-        <Link to={`/api/products/create`} >
+        <Link to={`/products/create`} >
                     <Button variant="secondary">Añadir producto</Button>
         </Link>
-        </div>  
+        </div> 
+        <div className='producto'> 
         <Card key={i} style={{ width: '18rem' }}> 
             <Card.Body>
-                <Link to={`/api/products/${producto.nombre}/edit`}>
+                <Link to={`/products/${producto.id}/edit`}>
                     <Button variant="secondary">Editar producto</Button>
                 </Link>
                 <Card.Title><h2>{producto.nombre}</h2></Card.Title> 
@@ -22,12 +23,13 @@ const AllProductos = ({producto,i}) =>{
                 <Card.Text>Actualmente en el almacén hay <h4>{producto.cantidadalmacen}</h4></Card.Text>
                 <Card.Footer> Stock de seguridad: {producto.stockseguridad}</Card.Footer>
                 <div className='seeProducto'>
-                <Link to={`/api/products/${producto.nombre}`}>
+                <Link to={`/products/${producto.id}`}>
                     <Button variant="primary">Ver producto</Button>
                 </Link>
                 </div>
             </Card.Body>
         </Card> 
+        </div>
         <br/>
         </>
     )
