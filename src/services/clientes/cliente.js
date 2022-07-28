@@ -40,7 +40,7 @@ const createCliente = ({
     });
 };
 
-const getCliente = (idCliente, jwt) => {
+const getCliente = (idCliente) => {
   const request = reqInstance.get(`${baseUrl}/${idCliente}`);
   return request
     .then((response) => response.data)
@@ -50,7 +50,7 @@ const getCliente = (idCliente, jwt) => {
     });
 };
 
-const deleteCliente = (idCliente, jwt) => {
+const deleteCliente = (idCliente) => {
   const request = reqInstance.delete(`${baseUrl}/${idCliente}/delete`);
   return request
     .then(function (response) {

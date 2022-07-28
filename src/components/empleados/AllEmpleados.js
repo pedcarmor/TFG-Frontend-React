@@ -12,8 +12,8 @@ const AllEmpleados = ({empleado}) =>{
     return (
         <>
             <tbody>
-                <tr>
-                <td><Link to={`/empleados/${empleado.id}`}>{empleado.nombre}</Link></td>
+                <tr className='hover-row'>
+                <td><Link className='row-link' to={`/empleados/${empleado.id}`}>{empleado.nombre}</Link></td>
                 <td>{empleado.direccion}</td>
                 <td>{empleado.telefono}</td>
                 <td>{empleado.email}</td>

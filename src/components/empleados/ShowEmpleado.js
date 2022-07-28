@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import empleadoService from "services/empleados/empleado";
 import Table from "react-bootstrap/Table";
 import useUser from "hooks/useUser";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router-dom";
+import { Button, Stack } from "react-bootstrap";
 
 const ShowEmpleado = () => {
   const id = useParams().id;
   const [empleado, setEmpleado] = useState([]);
-
-  const { isLogged } = useUser();
+  const { isLogged, hasAuthority } = useUser();
   let navigate = useNavigate();
   useEffect(() => {
     if (!isLogged) {
@@ -23,7 +22,7 @@ const ShowEmpleado = () => {
   return (
     <>
       <div>
-        <h1 className='h1-margin'>Detalle del empleado</h1>
+        <h1 className="h1-margin">Detalle del empleado</h1>
         <Table bordered size="sm" responsive>
           <tbody>
             <tr>
@@ -64,17 +63,26 @@ const ShowEmpleado = () => {
             </tr>
           </tbody>
         </Table>
-        {isLogged ? (
+        {isLogged && hasAuthority? (
           <>
-            <div>
-              <Link
-                to={`/empleados/${empleado.id}/edit`}
-                className="btn btn-primary buttons-table">Editar</Link>
-              <Button
-                className="buttons-table"
-                variant="outline-primary"
-                onClick={() => empleadoService.deleteEmpleado(id)}
-                href="/empleados">Eliminar</Button>
+            <div className="buttons">
+              <Stack direction="horizontal" gap={2}>
+                <Button
+                  to={`/empleados/${empleado.id}/edit`}
+                  className="btn btn-primary"
+                >
+                  Editar
+                </Button>
+                <div className="vr" />
+                <Button
+                  className="buttons-table"
+                  variant="outline-primary"
+                  onClick={() => empleadoService.deleteEmpleado(id)}
+                  href="/empleados"
+                >
+                  Eliminar
+                </Button>
+              </Stack>
             </div>
           </>
         ) : (

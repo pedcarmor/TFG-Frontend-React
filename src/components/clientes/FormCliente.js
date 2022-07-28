@@ -76,7 +76,9 @@ export default function FormCliente() {
           <FormCheck type="checkbox" label= "¿El cliente tiene IVA?" {...register("tieneIVA")} />
           <ErrorMessage errors={errors} name = "tieneIVA" as={<Alert variant="danger" />}/>
           </FormGroup>
+          <div className="buttons">
           <Button type="submit">Guardar</Button>
+          </div>
         </Form>
         </>
   )

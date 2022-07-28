@@ -41,10 +41,6 @@ table {
   text-align: center;
 }
 
-.buttons-table{
-  margin-right: 1.5rem;
-}
-
 .h1-margin{
   margin-bottom: 1rem;
 }
@@ -53,4 +49,24 @@ table {
   bottom:0px;
   width:100%;
   display: block;
+}
+
+.buttons{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.row-link {
+  position: block;
+  text-decoration: none;
+  color: inherit;
+}
+.row-link:hover {
+  position: block;
+  text-decoration: none;
+  color: #807978;
+}
+.hover-row:hover {
+  background: #e2f4ff;
+  outline: none;
 }

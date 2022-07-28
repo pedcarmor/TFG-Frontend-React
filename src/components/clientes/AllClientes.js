@@ -20,8 +20,8 @@ const AllClientes = ({cliente}) =>{
     return (
         <>
             <tbody>
-                <tr>
-                <td><Link to={`/clientes/${cliente.id}`}>{cliente.nombre}</Link></td>
+                <tr className='hover-row'>
+                <td><Link className='row-link' to={`/clientes/${cliente.id}`}>{cliente.nombre}</Link></td>
                 <td>{cliente.direccion}</td>
                 <td>{cliente.telefono}</td>
                 <td>{cliente.email}</td>

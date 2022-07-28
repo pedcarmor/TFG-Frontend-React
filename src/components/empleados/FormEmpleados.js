@@ -95,7 +95,9 @@ export default function FormEmpleado() {
                           })} />
           <ErrorMessage errors={errors} name = "salario" as={<Alert variant="danger" />}/>
           </FormGroup>
+          <div className="buttons">
           <Button type="submit">Guardar</Button>
+          </div>
         </Form>
         </>
   )

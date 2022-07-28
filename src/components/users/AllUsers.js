@@ -13,8 +13,8 @@ const AllUsers = ({user}) =>{
     return (
         <>
             <tbody>
-                <tr>
-                <td><Link to={`/admin/users/${user.username}`}>{user.username}</Link></td>
+                <tr className='hover-row'>
+                <td><Link className='row-link' to={`/admin/users/${user.username}`}>{user.username}</Link></td>
                 <td>{user.nombre}</td>
                 <td>{user.direccion}</td>
                 <td>{user.telefono}</td>

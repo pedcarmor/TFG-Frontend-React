@@ -1,15 +1,21 @@
-import React from 'react'
-import UsersView from './usersTable';
-import {Link} from "react-router-dom"
+import React from "react";
+import UsersView from "./usersTable";
+import { Button, Stack } from "react-bootstrap";
 const Users = () => {
-
-return (
+  return (
     <>
-    <div className='container'>
-    <UsersView></UsersView>
-    <Link to={`/users/create`} className="btn btn-primary">Añadir usuario</Link>
-    </div>
+      <div className="container">
+        <h1 className="h1-margin">Usuarios</h1>
+        <Stack direction="horizontal" gap={1}>
+          <div className="buttons ms-auto">
+            <Button href="/users/create" className="btn btn-primary">
+              Añadir usuario
+            </Button>
+          </div>
+        </Stack>
+        <UsersView></UsersView>
+      </div>
     </>
-)
-}
+  );
+};
 export default Users;

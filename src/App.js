@@ -25,7 +25,7 @@ function App() {
     <Router>
       <Header/>
       <div className='container-fluid'>
-      <div class="container xd-container">
+      <div className="container xd-container">
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/admin/users" element={<Users />} />

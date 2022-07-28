@@ -85,7 +85,9 @@ export default function FormUser() {
                             }})}/>
           <ErrorMessage errors={errors} name = "password" as={<Alert variant="danger" />}/>
           </FormGroup>
-          <Button type="submit">Guardar</Button>
+          <div className="buttons text-center">
+          <Button type="submit">Registrar</Button>
+          </div>
         </Form>
         </>
   )
